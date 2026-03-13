@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To_Do List Dashboard</title>
+    <link rel="stylesheet" href="css/To-do_list_dashboard.css">
+</head>
+<body>
+    <button id="theme-toggle">Toggle Dark Mode</button>
+
+    <div class="dashboard-container">
+        <div class="card header-card">
+            <h1 id="clock">00:00:00</h1>
+            <p id="date">Loading date...</p>
+            <h2 id="greeting-text">
+                <span id="time-greeting">Good Morning</span>, 
+                <span id="user-name">...</span>
+                <button id="btn-edit-name" class="btn-icon" title="Edit Name">✎</button>
+            </h2>
+        </div>
+
+        <div class="grid-layout">
+            <div class="left-column">
+                <div class="card timer-card">
+                    <h3>Focus Timer</h3>
+                    <div id="timer-display">25:00</div>
+                    <div class="timer-controls">
+                        <button id="btn-start" class="btn-primary">Start</button>
+                        <button id="btn-stop" class="btn-secondary">Stop</button>
+                        <button id="btn-reset" class="btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="card links-card">
+                    <h3>Quick Links</h3>
+                    <div class="input-group">
+                        <input type="text" id="link-name" placeholder="Link name">
+                        <input type="url" id="link-url" placeholder="https://..." required>
+                        <button id="btn-add-link" class="btn-primary">Add Link</button>
+                    </div>
+                    <div id="links-container" class="links-grid">
+                        </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="card tasks-card">
+                    <div class="tasks-header">
+                        <h3>Tasks</h3>
+                        <select id="task-sort">
+                            <option value="all">All</option>
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="task-input" placeholder="Add a new task...">
+                        <button id="btn-add-task" class="btn-primary">Add</button>
+                    </div>
+                    <ul id="task-list">
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="name-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+            <h3>Welcome!</h3>
+            <p>Who is focusing today?</p>
+            <div class="input-group">
+                <input type="text" id="modal-name-input" placeholder="Enter your name...">
+            </div>
+            <button id="btn-save-name" class="btn-primary">Save & Continue</button>
+        </div>
+    </div>
+    <script src="js/To-do_list_dashboard.js"></script>
+</body>
+</html>

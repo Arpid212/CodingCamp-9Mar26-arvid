@@ -22,9 +22,8 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// ==========================
-// CUSTOM NAME & POP-UP MODAL
-// ==========================
+
+// Custom nama & Pop up
 const nameEl = document.getElementById('user-name');
 const editNameBtn = document.getElementById('btn-edit-name');
 const nameModal = document.getElementById('name-modal');
@@ -45,7 +44,6 @@ function checkAndLoadName() {
     }
 }
 
-// Tombol Edit (Icon Pensil) diklik
 editNameBtn.addEventListener('click', () => {
     modalNameInput.value = localStorage.getItem('userName') || '';
     nameModal.classList.remove('hidden');
@@ -69,8 +67,13 @@ checkAndLoadName();
 
 // timer
 let timerInterval;
-let timeLeft = 25 * 60;
+
+let defaultTime = parseInt(localStorage.getItem('pomodoroTime')) || (25 * 60);
+let timeLeft = defaultTime; 
+
 const timerDisplay = document.getElementById('timer-display');
+const timeInput = document.getElementById('time-input'); // Menangkap elemen input
+const btnSetTime = document.getElementById('btn-set'); // Menangkap tombol set
 
 function formatTime(seconds) {
     const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -82,8 +85,31 @@ function updateTimerDisplay() {
     timerDisplay.textContent = formatTime(timeLeft);
 }
 
+updateTimerDisplay();
+
+btnSetTime.addEventListener('click', () => {
+    const inputMinutes = parseInt(timeInput.value);
+    
+    if (!isNaN(inputMinutes) && inputMinutes > 0 && inputMinutes <= 120) {
+        defaultTime = inputMinutes * 60;
+        timeLeft = defaultTime;
+
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        
+        localStorage.setItem('pomodoroTime', defaultTime.toString());
+      
+        updateTimerDisplay();
+        timeInput.value = ''; 
+    } else {
+        alert("Please enter a valid time between 1 and 120 minutes.");
+    }
+});
+
 document.getElementById('btn-start').addEventListener('click', () => {
-    if (timerInterval) return; 
+    if (timerInterval) return; // Mencegah interval ganda jika tombol start diklik berkali-kali
     timerInterval = setInterval(() => {
         if (timeLeft > 0) {
             timeLeft--;
@@ -96,6 +122,7 @@ document.getElementById('btn-start').addEventListener('click', () => {
     }, 1000);
 });
 
+
 document.getElementById('btn-stop').addEventListener('click', () => {
     clearInterval(timerInterval);
     timerInterval = null;
@@ -104,7 +131,7 @@ document.getElementById('btn-stop').addEventListener('click', () => {
 document.getElementById('btn-reset').addEventListener('click', () => {
     clearInterval(timerInterval);
     timerInterval = null;
-    timeLeft = 25 * 60;
+    timeLeft = defaultTime; // Mengembalikan ke waktu default yang sudah diset, BUKAN 25 menit mutlak
     updateTimerDisplay();
 });
 

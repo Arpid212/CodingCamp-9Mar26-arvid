@@ -65,7 +65,6 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Header / Clock */
 .header-card {
     text-align: center;
 }
@@ -85,7 +84,6 @@ body {
     display: inline-block;
 }
 
-/* Layout */
 .grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -93,7 +91,6 @@ body {
 }
 .left-column { display: flex; flex-direction: column; gap: 20px; }
 
-/* Focus Timer */
 .timer-card { text-align: center; }
 #timer-display {
     font-size: 4rem;
@@ -104,7 +101,6 @@ body {
     margin: 0 5px;
 }
 
-/* Common Inputs & Buttons */
 .input-group {
     display: flex;
     gap: 10px;
@@ -132,7 +128,6 @@ button:hover { opacity: 0.8; }
 .btn-danger { background: var(--danger-color); color: white; padding: 5px 10px; font-size: 0.8rem;}
 .btn-edit { background: var(--edit-color); color: white; padding: 5px 10px; font-size: 0.8rem; }
 
-/* To-Do List */
 .tasks-header {
     display: flex;
     justify-content: space-between;
@@ -152,7 +147,6 @@ button:hover { opacity: 0.8; }
     color: var(--text-muted);
 }
 
-/* Quick Links */
 .links-grid {
     display: flex;
     flex-wrap: wrap;
@@ -178,7 +172,6 @@ button:hover { opacity: 0.8; }
     padding: 8px 10px;
 }
 
-/* Custom Name Edit Button */
 .btn-icon {
     background: none;
     border: none;
@@ -192,7 +185,6 @@ button:hover { opacity: 0.8; }
     color: var(--primary-color);
 }
 
-/* Modal / Pop-up Form */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -232,6 +224,24 @@ button:hover { opacity: 0.8; }
     font-size: 1.1rem;
 }
 
+.timer-input-group {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#time-input {
+    max-width: 80px; 
+    text-align: center; 
+}
+
+#time-input::-webkit-outer-spin-button,
+#time-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+#time-input[type=number] {
+    -moz-appearance: textfield;
+}
 
 /* Responsive */
 @media (max-width: 768px) {

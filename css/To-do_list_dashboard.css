@@ -243,10 +243,6 @@ button:hover { opacity: 0.8; }
     -moz-appearance: textfield;
 }
 
-/* ==========================
-   RESPONSIF UNTUK LAYAR HP
-   (Maksimal lebar 768px)
-========================== */
 @media (max-width: 768px) {
     /* 1. Ubah grid 2 kolom menjadi 1 kolom (bertumpuk ke bawah) */
     .grid-layout { 

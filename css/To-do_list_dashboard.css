@@ -243,7 +243,49 @@ button:hover { opacity: 0.8; }
     -moz-appearance: textfield;
 }
 
-/* Responsive */
+/* ==========================
+   RESPONSIF UNTUK LAYAR HP
+   (Maksimal lebar 768px)
+========================== */
 @media (max-width: 768px) {
-    .grid-layout { grid-template-columns: 1fr; }
+    /* 1. Ubah grid 2 kolom menjadi 1 kolom (bertumpuk ke bawah) */
+    .grid-layout { 
+        grid-template-columns: 1fr; 
+    }
+
+    /* 2. Kecilkan ukuran font yang terlalu besar agar tidak keluar layar */
+    #clock {
+        font-size: 2rem; /* Sebelumnya 3rem */
+    }
+    #timer-display {
+        font-size: 2.5rem; /* Sebelumnya 4rem */
+    }
+
+    /* 3. Kurangi jarak di dalam kotak (padding) agar lebih hemat tempat */
+    .card {
+        padding: 15px; /* Sebelumnya 24px */
+    }
+
+    /* 4. Buat input form (kolom ketik & tombol) menyusun ke bawah */
+    .input-group {
+        flex-direction: column; 
+    }
+    
+    .input-group button {
+        width: 100%; /* Tombol memenuhi lebar layar */
+        margin-top: 5px;
+    }
+
+    /* 5. Pastikan tombol Timer tidak berdesakan */
+    .timer-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .timer-controls button {
+        margin: 0;
+        flex: 1 1 auto; /* Tombol akan menyesuaikan lebar ruang yang ada */
+    }
 }

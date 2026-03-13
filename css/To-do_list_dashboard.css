@@ -242,56 +242,51 @@ button:hover { opacity: 0.8; }
 #time-input[type=number] {
     -moz-appearance: textfield;
 }
-/* ==========================
-   RESPONSIF UNTUK LAYAR HP
-   (Maksimal lebar 768px)
-========================== */
+
 @media (max-width: 768px) {
-    /* 1. Kurangi jarak tepi layar utama */
     body {
-        padding: 10px;
-        overflow-x: hidden; /* Mencegah layar bisa digeser ke kanan/kiri */
+        padding: 70px 15px 20px 15px; 
+        align-items: flex-start; 
+        height: auto;
     }
 
-    /* 2. Perbaiki tombol Dark Mode agar tidak melayang berantakan */
     #theme-toggle {
-        position: relative;
-        top: 0;
-        right: 0;
-        width: 100%;
-        margin-bottom: 15px;
-        text-align: center;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 0.8rem;
+        padding: 8px 12px;
+        width: auto;
+        margin: 0;
     }
 
-    /* 3. PAKSA semua input dan tombol bertumpuk ke bawah */
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
     .input-group {
-        flex-direction: column !important; /* !important memastikan aturan ini menang */
+        flex-direction: column;
         gap: 10px;
     }
-
     .input-group input, 
     .input-group select, 
     .input-group button {
-        width: 100% !important;
+        width: 100%;
         margin: 0;
     }
 
-    /* 4. Sesuaikan ukuran teks yang kebesaran */
-    #clock { font-size: 2.5rem; }
-    #timer-display { font-size: 3rem; }
-    .card { padding: 15px; }
-
-    /* 5. Rapikan tata letak tombol timer */
-    .timer-controls {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .timer-controls button {
-        flex: 1 1 30%;
-        margin: 0;
-    }
     .timer-input-group {
-        flex-direction: row !important; /* Khusus input waktu, biarkan sejajar dengan tombol Set */
+        flex-direction: row;
+        justify-content: center;
     }
+    .timer-input-group input {
+        width: 80px !important;
+    }
+    .timer-input-group button {
+        width: auto !important;
+    }
+
+    #clock { font-size: 2.2rem; }
+    #timer-display { font-size: 3.5rem; }
+    .card { padding: 15px; }
 }
